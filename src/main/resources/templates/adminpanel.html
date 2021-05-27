@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+</head>
+
+<body>
+
+<h1>TO JEST PANEL ADMINA</h1>
+
+<ol style="list-style-type: none">
+    <li th:each="user: ${users}">
+        <span>Login: </span>
+        <span th:text="${user.username} ?: ${noData}"></span>
+        <span>Imię: </span>
+        <span th:text="${user.firstName} ?: ${noData}"></span>
+        <span>Nazwisko: </span>
+        <span th:text="${user.lastName} ?: ${noData}"></span>
+        <span>Role użytkownika: </span>
+        <span th:text="${user.getUserRoles()} ?: ${noData}"></span>
+
+        <span th:if="${user.getUserRoles().contains('ROLE_ADMIN')}"><a
+                th:href="@{|/adminpanel/changeUserRole/${user.id}|}">Odbierz admina</a></span>
+        <span th:unless="${user.getUserRoles().contains('ROLE_ADMIN')}"><a
+                th:href="@{|/adminpanel/changeUserRole/${user.id}|}">Nadaj admina</a></span>
+    </li>
+</ol>
+
+<a th:href="@{userPanel}">Wróć do panelu użytkownika</a>
+
+</body>
+
+</html>

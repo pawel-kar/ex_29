@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Panel</title>
+</head>
+
+<body>
+
+    <h1>PANEL UZYTKOWNIKA</h1>
+    <a th:href="@{/changeCredentials}">Zmien dane</a> <br>
+    <a href="/logout">Wyloguj</a> <br>
+    <span th:if="${userWithAdminRole == true}"> <a th:href="@{/adminpanel}">Panel admina</a> </span>
+
+</body>
+
+</html>
